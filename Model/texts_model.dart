@@ -7,4 +7,5 @@ class Texts {
   Texts({required this.themeStyle});
   Text get mainTitle => Text(Worlds.mainTitle, style: themeStyle.appBar);
   Text get avtor => Text(Worlds.avtor, style: themeStyle.avtor);
+  Text get pyragy => Text(Worlds.pragy, style: themeStyle.pyragy);
 }

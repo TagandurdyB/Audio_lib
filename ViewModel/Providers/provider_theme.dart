@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 import '../../Model/texts_model.dart';
 
 class ProviderTheme extends ChangeNotifier {
-  bool _isLight = false;
+  bool _isLight = true;
   bool get isLight => _isLight;
   void tongleTheme() {
     _isLight = !_isLight;

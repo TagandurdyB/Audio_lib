@@ -1,5 +1,5 @@
-import 'package:audio/ViewModel/Providers/provider_theme.dart';
-import 'package:audio/ViewModel/size_vm.dart';
+import '/ViewModel/Providers/provider_theme.dart';
+import '/ViewModel/size_vm.dart';
 import 'package:flutter/material.dart';
 
 import '../Widgets/my_container.dart';
@@ -14,9 +14,9 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
   double pad1 = 0, pad2 = 0, pad3 = 0, pad4 = 0, pad5 = 0;
 
-final double paddConst=25;
+  final double paddConst = 25;
 
-  List<Color> colors = [Colors.blue, Colors.green];
+  List<Color> colors = [const Color(0xffA75D5D), const Color(0xff4C1C18)];
 
   @override
   Widget build(BuildContext context) {
@@ -28,30 +28,38 @@ final double paddConst=25;
             ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    pad1=pad1 == 0 ? paddConst : 0;
+                    pad1 = pad1 == 0 ? paddConst : 0;
                   });
                 },
                 child: const Text("1")),
-            ElevatedButton(onPressed: () {
-               setState(() {
-                    pad2=pad2 == 0 ? paddConst : 0;
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    pad2 = pad2 == 0 ? paddConst : 0;
                   });
-            }, child: const Text("2")),
-            ElevatedButton(onPressed: () {
-               setState(() {
-                    pad3=pad3 == 0 ? paddConst : 0;
+                },
+                child: const Text("2")),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    pad3 = pad3 == 0 ? paddConst : 0;
                   });
-            }, child: const Text("3")),
-            ElevatedButton(onPressed: () {
-               setState(() {
-                    pad4=pad4 == 0 ? paddConst : 0;
+                },
+                child: const Text("3")),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    pad4 = pad4 == 0 ? paddConst : 0;
                   });
-            }, child: const Text("4")),
-            ElevatedButton(onPressed: () {
-               setState(() {
-                    pad5=pad5 == 0 ? paddConst : 0;
+                },
+                child: const Text("4")),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    pad5 = pad5 == 0 ? paddConst : 0;
                   });
-            }, child: const Text("5")),
+                },
+                child: const Text("5")),
           ],
         ),
         Expanded(
@@ -86,32 +94,38 @@ final double paddConst=25;
                       padd: pad2,
                       child: MyContainer(
                         duration: const Duration(milliseconds: 150),
-                          onTap: () {
-                            setState(() {
-                              if (pad1 == 0) {
-                                pad1 = 20;
-                              } else {
-                                pad1 = 0;
-                              }
-                            });
-                          },
-                          boxShadow: DistributorTheme(context).shadows.all,
-                          colors: [Colors.green, Colors.green[800]!],
-                          width: arentir * 0.4-pad1,
-                          height: arentir * 0.4-pad1,
-                          shape: arentir * 0.3,
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Icon(Icons.brightness_5_outlined,
-                                  size: arentir * 0.3, color: Colors.white),
-                              Icon(
-                                Icons.brightness_5_outlined,
-                                size: arentir * 0.25,
-                                color: Colors.red,
-                              ),
-                            ],
-                          )),
+                        onTap: () {
+                          setState(() {
+                            if (pad1 == 0) {
+                              pad1 = 20;
+                            } else {
+                              pad1 = 0;
+                            }
+                          });
+                        },
+                        boxShadow: DistributorTheme(context).shadows.all,
+                        colors: [Colors.green, Colors.green[800]!],
+                        width: arentir * 0.4 - pad1,
+                        height: arentir * 0.4 - pad1,
+                        shape: arentir * 0.3,
+                        child: const ClipOval(
+                          child: Image(
+                            image: ExactAssetImage("assets/pragy.jpg"),
+                          ),
+                        ),
+                        // Stack(
+                        //   alignment: Alignment.center,
+                        //   children: [
+                        //     Icon(Icons.brightness_5_outlined,
+                        //         size: arentir * 0.3, color: Colors.white),
+                        //     Icon(
+                        //       Icons.brightness_5_outlined,
+                        //       size: arentir * 0.25,
+                        //       color: Colors.red,
+                        //     ),
+                        //   ],
+                        // ),
+                      ),
                     ),
                   ),
                 ),

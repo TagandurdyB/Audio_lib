@@ -13,4 +13,6 @@ class Styles {
       TextStyle(color: themeColor.text, fontSize: Nums.input);
   TextStyle get avtor =>
       TextStyle(color: themeColor.text, fontSize: Nums.avtor);
+  TextStyle get pyragy => TextStyle(
+      color: themeColor.text, fontSize: Nums.pyragy, fontFamily: "Pan_node");
 }

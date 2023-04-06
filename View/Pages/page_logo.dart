@@ -20,7 +20,7 @@ class _LogoPageState extends State<LogoPage> {
   void initState() {
     super.initState();
     Future.delayed(Time.times.logo).then((value) {
-      if (_selectedIndex != 5) _goHome;
+       if (_selectedIndex != 5) _goHome;
     });
   }
 
@@ -31,18 +31,24 @@ class _LogoPageState extends State<LogoPage> {
     final size = MediaQuery.of(context).size;
     MySize().changeSize(size.width, size.height);
     return Scaffold(
-      body: Stack(
-        children: [
-          buildSifr(),
-          Center(child: buildLogo()),
-          Visibility(
-            visible: _selectedIndex == 5,
-            child: Container(
-                alignment: Alignment.topCenter,
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: DistributorTheme(context).texts.avtor),
-          ),
-        ],
+      body: MyContainer(
+        colors: const [Color(0xffA77979), Color(0xff472D2D)],
+        child: Stack(
+          children: [
+            Center(child: buildLogo()),
+            buildSifr(),
+            Visibility(
+              visible: _selectedIndex == 4,
+              child: MyContainer(
+                  onTap: () => _goHome,
+                  color: Colors.transparent,
+                  height: double.infinity,
+                  alignment: Alignment.topCenter,
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: DistributorTheme(context).texts.avtor),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -61,7 +67,7 @@ class _LogoPageState extends State<LogoPage> {
   }
 
   void _sifrFunc(int index) {
-    if (_selectedIndex != 5) {
+    if (_selectedIndex != 4) {
       if (index == _selectedIndex) {
         _selectedIndex++;
         setState(() {});
@@ -70,19 +76,26 @@ class _LogoPageState extends State<LogoPage> {
           _selectedIndex = 0;
         }
       }
-     // debugPrint("+++++++++++++++++++++$_selectedIndex");
+      // debugPrint("+++++++++++++++++++++$_selectedIndex");
     }
   }
 
   Widget buildLogo() => GestureDetector(
-        onTap: () => _sifrFunc(4),
-        onDoubleTap: () => _goHome,
-        child: const CircleAvatar(
-          maxRadius: 70,
-          child: Icon(
-            Icons.ac_unit_sharp,
-            size: 40,
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const ClipOval(
+              child: Image(
+                  width: 200,
+                  height: 200,
+                  image: ExactAssetImage("assets/pragy.jpg")),
+            ),
+            SizedBox(
+              height: MySize.arentir * 0.1,
+            ),
+            DistributorTheme(context).texts.pyragy,
+          ],
         ),
       );
 }

@@ -5,7 +5,6 @@ import '/ViewModel/Providers/provider_theme.dart';
 import 'package:flutter/material.dart';
 import 'my_app_bar.dart';
 import 'my_drawer.dart';
-import 'my_navigation_bar.dart';
 import 'my_navigation_rail.dart';
 
 class ScaffoldAll extends StatelessWidget {
@@ -82,8 +81,8 @@ class ScaffoldAll extends StatelessWidget {
           Expanded(child: body),
         ],
       ),
-      bottomNavigationBar:
-          MyPlatform.isMobil ? const MyBottomNavigationBar() : null,
+      // bottomNavigationBar:
+      //     MyPlatform.isMobil ? const MyBottomNavigationBar() : null,
     );
   }
 

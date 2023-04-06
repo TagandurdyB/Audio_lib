@@ -2,11 +2,13 @@ import '/ViewModel/Providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'ViewModel/orientation_vm.dart';
 import 'ViewModel/routes_vm.dart';
 import 'ViewModel/theme_vm.dart';
 
 void main() {
   runApp(MultiProvider(providers: MyProvoders.list, child: const MyApp()));
+  MyOrientation.systemUiOverlayStyle();
 }
 
 class MyApp extends StatelessWidget {
