@@ -4,7 +4,7 @@ class Worlds {
   static const String pragy = "Magtymguly Pyragy";
   static const String avtor = "Tagandurdy Baýramdurdyýew Mekanowiç";
 
-  static const String mainTitle = "Main Title";
+  static const String mainTitle = "PYRAGY";
 
   final String naviHome = "Home";
   final String naviExplore = "Explore";

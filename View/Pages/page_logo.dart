@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pragy/View/Widgets/pragy_avater.dart';
 import '/View/Widgets/my_container.dart';
 import '/ViewModel/Providers/provider_theme.dart';
 
@@ -20,7 +21,7 @@ class _LogoPageState extends State<LogoPage> {
   void initState() {
     super.initState();
     Future.delayed(Time.times.logo).then((value) {
-       if (_selectedIndex != 5) _goHome;
+      if (_selectedIndex != 5) _goHome;
     });
   }
 
@@ -85,11 +86,9 @@ class _LogoPageState extends State<LogoPage> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const ClipOval(
-              child: Image(
-                  width: 200,
-                  height: 200,
-                  image: ExactAssetImage("assets/pragy.jpg")),
+            AvaterPyragy(
+              height: MySize.arentir * 0.6,
+              width: MySize.arentir * 0.6,
             ),
             SizedBox(
               height: MySize.arentir * 0.1,

@@ -1,3 +1,6 @@
+import 'package:pragy/View/Widgets/my_container.dart';
+import 'package:pragy/ViewModel/Providers/provider_app_bar.dart';
+
 import '/ViewModel/platform_vm.dart';
 
 import '../../ViewModel/size_vm.dart';
@@ -10,12 +13,14 @@ import 'my_navigation_rail.dart';
 class ScaffoldAll extends StatelessWidget {
   final Widget? appBarLeading;
   final bool? appBarCenterTitle;
+  final bool enableAppBar;
   final List<Widget>? appBarActions;
   final List<Widget>? actions;
   final Widget body;
   final bool bottomBar;
   final GlobalKey<ScaffoldState>? scaffoldKey;
   const ScaffoldAll({
+    this.enableAppBar = true,
     this.appBarLeading = const BackButton(),
     this.appBarCenterTitle,
     this.appBarActions,
@@ -47,22 +52,25 @@ class ScaffoldAll extends StatelessWidget {
             color: DistributorTheme(context).colors.appBar,
             boxShadow: DistributorTheme(context).shadows.appBar,
           ),
-          child: Column(
-            children: [
-              MyAppBar(
-                leading: appBarLeading,
-                centerTitle: appBarCenterTitle ?? MyPlatform.isMobil,
-                actions: appBarActions,
-              ),
-              Visibility(
-                visible: bottomBar, //DistributorAppBar(context).bottomDrawer,
-                child: Expanded(
-                    child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: buildBottom(),
-                )),
-              )
-            ],
+          child: Visibility(
+            visible:DistributorAppBar(context).isEnabled?enableAppBar:false,
+            child: Column(
+              children: [
+                MyAppBar(
+                  leading: appBarLeading,
+                  centerTitle: appBarCenterTitle ?? MyPlatform.isMobil,
+                  actions: appBarActions,
+                ),
+                Visibility(
+                  visible: bottomBar, //DistributorAppBar(context).bottomDrawer,
+                  child: Expanded(
+                      child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: buildBottom(),
+                  )),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -78,7 +86,10 @@ class ScaffoldAll extends StatelessWidget {
               visible: !MyPlatform.isMobil,
               child: const VerticalDivider(
                   thickness: 1, width: 1, color: Colors.black)),
-          Expanded(child: body),
+          Expanded(
+              child: MyContainer(
+                  colors: DistributorTheme(context).colors.canvases,
+                  child: body)),
         ],
       ),
       // bottomNavigationBar:

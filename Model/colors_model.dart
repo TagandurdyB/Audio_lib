@@ -10,6 +10,7 @@ class ThemeColor {
   Color navigationBg = const Color(0xffF2F2F2);
   Color navigatActiveIcon = const Color(0xffDADADA);
   Color navigatUnactiveIcon = Colors.grey;
+  List<Color> canvases = const [Color(0xffA77979), Color(0xff472D2D)];
 }
 
 class ThemeDarkColor extends ThemeColor {
@@ -27,4 +28,6 @@ class ThemeDarkColor extends ThemeColor {
   Color navigatActiveIcon = Colors.white;
   @override
   Color navigatUnactiveIcon = Colors.grey;
+  @override
+  List<Color> canvases = const [Color(0xff461111), Color(0xff1A120B)];
 }

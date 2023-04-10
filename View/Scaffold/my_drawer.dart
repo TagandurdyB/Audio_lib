@@ -1,3 +1,4 @@
+import '../Widgets/pragy_avater.dart';
 import '/ViewModel/Providers/provider_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -22,12 +23,23 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       child: Column(children: [
         Container(
-          color: const Color(0xff7262DF),
+          // color: const Color(0xff7262DF),
           padding: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top,
           ),
         ),
         title ?? const SizedBox(),
+        Container(
+          padding: const EdgeInsets.all(8),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            const AvaterPyragy(
+              width: 50,
+              height: 50,
+            ),
+            DistributorTheme(context).texts.pyragy
+          ]),
+        ),
         Expanded(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),

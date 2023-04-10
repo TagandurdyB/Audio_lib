@@ -12,9 +12,9 @@ class HomeScreens extends StatelessWidget {
     return buildScreens();
   }
 
-  List<Widget> screens = const [
-    FirstScreen(),
+  List<Widget> screens = [
     SecondScreen(),
+    const FirstScreen(),
   ];
 
   Widget buildScreens() {
@@ -23,8 +23,7 @@ class HomeScreens extends StatelessWidget {
           screens.length,
           (index) => Builder(
                 builder: (context) => Offstage(
-                  offstage:
-                      index != DistributorNavigation(context).screenIndex,
+                  offstage: index != DistributorNavigation(context).screenIndex,
                   child: Scaffold(
                     body: screens[index],
                   ),

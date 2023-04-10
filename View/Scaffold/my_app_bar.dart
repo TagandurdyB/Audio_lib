@@ -5,12 +5,8 @@ class MyAppBar extends StatelessWidget {
   final Widget? leading;
   final bool centerTitle;
   final List<Widget>? actions;
-  const MyAppBar({
-    super.key,
-    this.leading,
-    this.centerTitle = true,
-    this.actions
-  });
+  const MyAppBar(
+      {super.key, this.leading, this.centerTitle = true, this.actions});
 
   @override
   Widget build(BuildContext context) {

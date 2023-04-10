@@ -1,3 +1,4 @@
+import '../Widgets/pragy_avater.dart';
 import '/ViewModel/Providers/provider_theme.dart';
 import '/ViewModel/size_vm.dart';
 import 'package:flutter/material.dart';
@@ -92,40 +93,21 @@ class _FirstScreenState extends State<FirstScreen> {
                       radius: 200,
                       duration: 100,
                       padd: pad2,
-                      child: MyContainer(
-                        duration: const Duration(milliseconds: 150),
-                        onTap: () {
-                          setState(() {
-                            if (pad1 == 0) {
-                              pad1 = 20;
-                            } else {
-                              pad1 = 0;
-                            }
-                          });
-                        },
-                        boxShadow: DistributorTheme(context).shadows.all,
-                        colors: [Colors.green, Colors.green[800]!],
-                        width: arentir * 0.4 - pad1,
-                        height: arentir * 0.4 - pad1,
-                        shape: arentir * 0.3,
-                        child: const ClipOval(
-                          child: Image(
-                            image: ExactAssetImage("assets/pragy.jpg"),
-                          ),
-                        ),
-                        // Stack(
-                        //   alignment: Alignment.center,
-                        //   children: [
-                        //     Icon(Icons.brightness_5_outlined,
-                        //         size: arentir * 0.3, color: Colors.white),
-                        //     Icon(
-                        //       Icons.brightness_5_outlined,
-                        //       size: arentir * 0.25,
-                        //       color: Colors.red,
-                        //     ),
-                        //   ],
-                        // ),
-                      ),
+                      child: Hero(
+                          tag: "pyragy_img1",
+                          child: AvaterPyragy(
+                            onTap: () {
+                              setState(() {
+                                if (pad1 == 0) {
+                                  pad1 = 20;
+                                } else {
+                                  pad1 = 0;
+                                }
+                              });
+                            },
+                            width: arentir * 0.4 - pad1,
+                            height: arentir * 0.4 - pad1,
+                          )),
                     ),
                   ),
                 ),

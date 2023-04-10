@@ -7,9 +7,7 @@ class ScaffoldProvider extends ChangeNotifier {
     Navigator.pop(context);
   }
 
-  void changeFuncBackBtn(Function func) {
-    _funcBackBtn = func;
-    notifyListeners();
-  }
 
 }
+
+

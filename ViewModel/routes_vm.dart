@@ -1,3 +1,4 @@
+import '../View/Pages/page_recorder.dart';
 import '/View/Pages/page_about.dart';
 
 import '/View/Pages/page_home.dart';
@@ -10,10 +11,12 @@ class Rout {
   static const String home = "/HomePage";
   static const String logo = "/LogoPage";
   static const String about = "/AboutPage";
+    static const String record = "/RecorderPage";
 
   static Map<String, Widget Function(dynamic)> pages = {
     logo: (context) => const LogoPage(),
     home: (context) => const HomePage(),
     about: (context) => const AboutPage(),
+    record: (context) => const RecorderPage(),
   };
 }

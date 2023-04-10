@@ -35,6 +35,14 @@ class ProviderAppBar extends ChangeNotifier {
 
   double _bottomHeight = kToolbarHeight;
   double get bottomHeight => _bottomHeight;
+
+  bool _enableAppbar = true;
+  bool get enableAppbar => _enableAppbar;
+  void changeAppBarShow(bool enabled) {
+    _enableAppbar = enabled;
+    notifyListeners();
+  }
+
 }
 
 /*=====================================================================================*/
@@ -61,6 +69,9 @@ class ProcessAppBar {
       leading(null);
     }
   }
+
+void changeVisivle(bool enabled) => _changeProvider(context).changeAppBarShow(enabled);
+
 }
 
 class DistributorAppBar {
@@ -75,4 +86,5 @@ class DistributorAppBar {
   bool get drawer => _getProvider(context).drawer;
   bool get bottomDrawer => _getProvider(context).bottomDrawer;
   double get drawerHeight => _getProvider(context).bottomHeight;
+  bool get isEnabled => _getProvider(context).enableAppbar;
 }

@@ -1,7 +1,7 @@
-import '../Screens/home_screens.dart';
 import 'package:flutter/material.dart';
 
 import '../Scaffold/my_scaffold_all.dart';
+import '../Screens/second_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
     return ScaffoldAll(
       appBarLeading: null,
       bottomBar: false,
-      body: HomeScreens()
+      body: SecondScreen(),
     );
   }
 }
