@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 import 'package:pragy/View/Widgets/my_container.dart';
 import 'package:pragy/View/Widgets/pragy_avater.dart';
 
@@ -10,14 +11,7 @@ class SecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            VolumeEffect(),
-          ]),
-    );
+    return const VolumeEffect();
   }
 }
 
@@ -29,37 +23,74 @@ class VolumeEffect extends StatefulWidget {
 }
 
 class _VolumeEffectState extends State<VolumeEffect> {
+  final recorder = FlutterSoundRecorder();
   double? height = 600;
+  bool isListening = false;
 
   final double arentir = MySize.arentir;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        MyContainer(
-          duration: const Duration(milliseconds: 200),
-          color: Colors.transparent,
-          borderColor: Colors.transparent,
-          alignment: Alignment.center,
-          height: height,
-          child: AvaterPyragy(
-            onTap: () {
-              setState(() {
-                if (height == MySize.width) {
-                  height = 600;
-                  ProcessAppBar(context).changeVisivle(true);
-                } else {
-                  height = MySize.width;
-                  ProcessAppBar(context).changeVisivle(false);
-                }
-              });
-              //Navigator.pushNamed(context, Rout.record);
-            },
-            width: arentir * 0.4,
-            height: arentir * 0.4,
+    return Align(
+      alignment: Alignment.center,
+      child: AvaterPyragy(
+        onTap: () {
+          setState(() {
+            if (isListening) {
+              height = 600;
+              isListening = false;
+              ProcessAppBar(context).changeVisivle(true);
+            } else if (!isListening) {
+              height = MySize.width;
+              isListening = true;
+              ProcessAppBar(context).changeVisivle(false);
+            }
+          });
+          //Navigator.pushNamed(context, Rout.record);
+        },
+        width: arentir * 0.4,
+        height: arentir * 0.4,
+      ),
+    );
+    // return Column(
+    //   children: [
+
+    //     // Text(
+    //     //   "00:00",
+    //     //   style: TextStyle(fontSize: arentir * 0.07),
+    //     // ),
+    //     // buildBtn("Iber", Icons.send, () {}),
+    //     // // buildBtn("Ýatda Sakla", Icons.save),
+    //     // buildBtn("Ýatyr", Icons.cancel, () {}),
+    //   ],
+    // );
+  }
+
+  Widget buildBtn(String text, IconData iconD, Function func) {
+    return MyContainer(
+      onTap: func,
+      margin: EdgeInsets.all(arentir * 0.02),
+      shape: arentir * 0.1,
+      borderWidth: 2,
+      colors: [Colors.brown, Colors.brown[800]!],
+      width: arentir * 0.6,
+      height: arentir * 0.15,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        children: [
+          Icon(
+            iconD,
+            size: arentir * 0.08,
+            color: Colors.white,
           ),
-        ),
-      ],
+          SizedBox(width: arentir * 0.04),
+          Text(
+            text,
+            style: TextStyle(
+                fontSize: arentir * 0.07, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
     );
   }
 }

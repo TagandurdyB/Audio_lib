@@ -13,8 +13,8 @@ class HomeScreens extends StatelessWidget {
   }
 
   List<Widget> screens = [
-    SecondScreen(),
     const FirstScreen(),
+    const SecondScreen(),
   ];
 
   Widget buildScreens() {
