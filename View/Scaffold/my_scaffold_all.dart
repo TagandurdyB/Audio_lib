@@ -1,5 +1,5 @@
-import 'package:pragy/View/Widgets/my_container.dart';
-import 'package:pragy/ViewModel/Providers/provider_app_bar.dart';
+import '/View/Widgets/my_container.dart';
+import '/ViewModel/Providers/provider_app_bar.dart';
 
 import '/ViewModel/platform_vm.dart';
 

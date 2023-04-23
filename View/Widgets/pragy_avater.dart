@@ -31,7 +31,7 @@ class AvaterPyragy extends StatelessWidget {
       child: const ClipOval(
         child: Image(
           fit: BoxFit.cover,
-          image: ExactAssetImage("assets/pragy.jpg"),
+          image: ExactAssetImage("assets/pyragy_img.png"),
         ),
       ),
     );

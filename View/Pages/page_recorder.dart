@@ -6,8 +6,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:pragy/View/Widgets/pragy_avater.dart';
-import 'package:pragy/ViewModel/size_vm.dart';
+import '/View/Widgets/pragy_avater.dart';
+import '/ViewModel/size_vm.dart';
 import '../Widgets/my_container.dart';
 import '/View/Scaffold/my_scaffold_all.dart';
 
@@ -29,9 +29,13 @@ class _RecorderPageState extends State<RecorderPage> {
   void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(milliseconds: 900), (timer) {
+      if (timerView == "01:00") {
+        stop();
+        Navigator.pop(context);
+      }
       setState(() {
         if (pagingVal == 0) {
-          pagingVal = 0.1;
+          pagingVal = 0.08;
         } else {
           pagingVal = 0;
         }
@@ -45,6 +49,7 @@ class _RecorderPageState extends State<RecorderPage> {
     if (status != PermissionStatus.granted) {
       throw "I Need Mic";
     }
+    
     await recorder.openRecorder();
     isReady = true;
     record();
@@ -53,13 +58,15 @@ class _RecorderPageState extends State<RecorderPage> {
 
   Future record() async {
     if (!isReady) return;
-    await recorder.startRecorder(toFile: "pyragy_sound");
+    await recorder.startRecorder(
+        toFile: "pyragy_sound.wav", codec: Codec.pcm16WAV);
   }
 
   Future stop() async {
     if (!isReady) return;
     final path = await recorder.stopRecorder();
     final audioFile = File(path!);
+
     print("AudioFile:=$audioFile");
   }
 
@@ -69,6 +76,8 @@ class _RecorderPageState extends State<RecorderPage> {
     recorder.closeRecorder();
     super.dispose();
   }
+
+  String timerView = "";
 
   @override
   Widget build(BuildContext context) {
@@ -87,11 +96,11 @@ class _RecorderPageState extends State<RecorderPage> {
                     child: Stack(
                       children: [
                         buildVolume(
-                          duration: const Duration(milliseconds: 600),
+                          duration: const Duration(milliseconds: 200),
                           child: buildVolume(
                             duration: const Duration(milliseconds: 400),
                             child: buildVolume(
-                              duration: const Duration(milliseconds: 200),
+                              duration: const Duration(milliseconds: 600),
                               child: const AvaterPyragy(
                                 width: 200,
                                 height: 200,
@@ -113,9 +122,9 @@ class _RecorderPageState extends State<RecorderPage> {
                     String twoDigit(int n) => n.toString().padLeft(2, "0");
                     String min = twoDigit(duration.inMinutes.remainder(60));
                     String sec = twoDigit(duration.inSeconds.remainder(60));
-
+                    timerView = "$min:$sec";
                     return Text(
-                      "$min:$sec",
+                      timerView,
                       style: TextStyle(
                           fontSize: arentir * 0.1, color: Colors.white),
                     );
@@ -144,7 +153,10 @@ class _RecorderPageState extends State<RecorderPage> {
       //shape: MySize.arentir * 0.5,
       decoration: BoxDecoration(
         color: Colors.blue,
-        gradient: RadialGradient(colors: [Colors.red, Colors.orange[200]!]),
+        gradient: RadialGradient(
+          colors: [Colors.transparent, Colors.brown[200]!],
+          stops: const [0.9, 1],
+        ),
         borderRadius: BorderRadius.circular(MySize.arentir * 0.5),
       ),
       padding: EdgeInsets.all(MySize.arentir * pagingVal),
@@ -174,7 +186,9 @@ class _RecorderPageState extends State<RecorderPage> {
           Text(
             text,
             style: TextStyle(
-                fontSize: arentir * 0.07, fontWeight: FontWeight.bold),
+                color: Colors.white,
+                fontSize: arentir * 0.07,
+                fontWeight: FontWeight.bold),
           ),
         ],
       ),

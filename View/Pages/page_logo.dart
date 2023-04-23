@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pragy/View/Widgets/pragy_avater.dart';
+import '/View/Widgets/pragy_avater.dart';
 import '/View/Widgets/my_container.dart';
 import '/ViewModel/Providers/provider_theme.dart';
 

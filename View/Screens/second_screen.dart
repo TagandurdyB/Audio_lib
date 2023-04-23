@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sound/flutter_sound.dart';
-import 'package:pragy/View/Widgets/my_container.dart';
-import 'package:pragy/View/Widgets/pragy_avater.dart';
+import '/View/Widgets/my_container.dart';
+import '/View/Widgets/pragy_avater.dart';
 
 import '../../ViewModel/Providers/provider_app_bar.dart';
 import '../../ViewModel/size_vm.dart';
